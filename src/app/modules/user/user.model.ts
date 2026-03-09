@@ -39,7 +39,6 @@ const userSchema = new Schema<IUser>(
 
     password: {
       type: String,
-      select: false, // hide password by default
     },
 
     phone: {

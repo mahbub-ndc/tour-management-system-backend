@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import { Server } from "http";
 import app from "./app";
 import { environment } from "./app/config/env";
+import { superAdmin } from "./app/utils/superadmin";
 
 let server: Server;
 
@@ -18,7 +19,11 @@ const startServer = async () => {
     console.log(error);
   }
 };
-startServer();
+
+(async () => {
+  await startServer();
+  await superAdmin();
+})();
 
 process.on("unhandledRejection", (error) => {
   if (server) {
